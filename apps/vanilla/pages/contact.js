@@ -146,4 +146,19 @@ export function renderContact(container) {
     if (typeof lucide !== 'undefined' && typeof lucide.createIcons === 'function') {
         lucide.createIcons({ nameAttr: 'data-lucide', root: container });
     }
+
+    const form = container.querySelector('.pageclip-form');
+    if (form && window.Pageclip) {
+        window.Pageclip.form(form, {
+            onSubmit: function (event) { },
+            onResponse: function (error, response) {
+                if (!error) {
+                    form.reset();
+                    schoolSelect.disabled = true;
+                    schoolSelect.innerHTML = '<option value="">Primero elige una facultad</option>';
+                }
+            },
+            successTemplate: '<span>¡Mensaje enviado con éxito!</span>'
+        });
+    }
 }
