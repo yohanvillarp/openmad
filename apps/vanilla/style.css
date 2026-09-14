@@ -1,0 +1,165 @@
+/* --- Google Fonts: Tipografía Académica --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Merriweather:wght@400;700&display=swap');
+
+/* --- Variables Globales: Sistema de Diseño UNAMAD --- */
+:root {
+    /* === COLORES CORPORATIVOS === */
+    --primary: #f54477;
+    --primary-light: #f8667f;
+    --primary-dark: #d63960;
+    --primary-50: #fef2f6;
+    --primary-100: #fce4ed;
+
+    /* === COLORES SECUNDARIOS: IDENTIDAD ACADÉMICA === */
+    --academic-navy: #0056A6;
+    --academic-navy-dark: color-mix(in srgb, var(--academic-navy) 82%, #000);
+    --academic-forest: #1b4d3e;
+    --academic-slate: #2d3e50;
+    --requirements: var(--academic-slate);
+    --requirements-bg: color-mix(in srgb, var(--requirements) 5%, var(--neutral-white));
+
+    /* === COLORES NEUTROS === */
+    --neutral-white: #ffffff;
+    --neutral-50: #f9fafb;
+    --neutral-100: #f3f4f6;
+    --neutral-200: #e5e7eb;
+    --neutral-300: #d1d5db;
+    --neutral-400: #9ca3af;
+    --neutral-500: #6b7280;
+    --neutral-600: #4b5563;
+    --neutral-700: #374151;
+    --neutral-800: #1f2937;
+    --neutral-900: #111827;
+
+    /* === COLORES FUNCIONALES === */
+    --success: #10b981;
+    --warning: #f59e0b;
+    --danger: #ef4444;
+    --info: #3b82f6;
+    --status-active: #d97706;
+    --status-active-dark: #b45309;
+    --status-active-bg: #fff7ed;
+    --status-active-bg-hover: #ffedd5;
+    --status-done: #059669;
+    --status-done-dark: #047857;
+    --status-done-bg: #ecfdf5;
+    --status-done-bg-hover: #d1fae5;
+
+    /* === ACENTOS ACADEMICOS === */
+    --accent-gold: #d97706;
+    --accent-emerald: #059669;
+
+    /* === BACKGROUNDS === */
+    --bg-primary: #f5f5f5;
+    --bg-secondary: #ffffff;
+    --bg-tertiary: #fef2f6;
+
+    /* === TIPOGRAFÍA === */
+    --font-serif: 'Merriweather', Georgia, serif;
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+    /* === ESPACIADO === */
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 12px;
+    --spacing-lg: 16px;
+    --spacing-xl: 24px;
+    --spacing-2xl: 32px;
+
+    /* === BORDER RADIUS === */
+    --radius-sm: 4px;
+    --radius-md: 6px;
+    --radius-lg: 8px;
+
+    /* === SHADOWS === */
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+    --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.1);
+    --shadow-xl: 0 12px 24px rgba(0, 0, 0, 0.15);
+
+    /* === TRANSICIONES === */
+    --transition-fast: 0.15s ease;
+    --transition-base: 0.2s ease;
+    --transition-slow: 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    --content-max: 1120px;
+}
+
+/* --- CSS Reset Universal --- */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* --- Estilos Base --- */
+body {
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    background-color: var(--academic-navy);
+    color: var(--neutral-700);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+#app {
+    flex: 0 0 auto;
+    width: 100%;
+    padding: var(--spacing-xl);
+    background: #f6f8fb;
+}
+
+#footer-root {
+    flex: 1 0 auto;
+    width: 100%;
+    background: var(--academic-navy);
+}
+
+.view-section {
+    width: 100%;
+}
+
+.page {
+    max-width: var(--content-max);
+    width: 100%;
+    margin: 0 auto;
+}
+
+.page__title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--academic-navy);
+    font-size: 1.6rem;
+}
+
+.icon-ruta {
+    width: 11px;
+    height: 11px;
+    flex-shrink: 0;
+    background: currentColor;
+    transform: rotate(45deg);
+    border-radius: 2px;
+}
+
+.icon-modulo {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    background: currentColor;
+    border-radius: 3px;
+}
+
+.icon-paso {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    background: currentColor;
+    border-radius: 50%;
+}
