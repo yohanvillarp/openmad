@@ -3682,6 +3682,106 @@ a.step-card--active:hover {
     margin-top: 4px;
 }
 
+.contact-form .btn:disabled,
+.contact-form .btn:disabled:hover {
+    color: var(--neutral-white);
+    background: var(--neutral-400);
+    cursor: not-allowed;
+}
+
+.contact-form__limit {
+    margin: -4px 0 0;
+    color: var(--neutral-500);
+    font-size: 0.72rem;
+    line-height: 1.45;
+}
+
+.contact-form__limit--reached {
+    color: var(--status-active-dark);
+    font-weight: 700;
+}
+
+.contact-form.contact-form--sent > :not(.pageclip-form__success) {
+    display: none;
+}
+
+.contact-form.pageclip-form > .pageclip-form__success {
+    position: static;
+    inset: auto;
+    display: flex;
+    min-height: 280px;
+    padding: 36px 24px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid color-mix(in srgb, var(--status-done) 28%, var(--neutral-white));
+    background: var(--status-done-bg);
+    text-align: center;
+}
+
+.contact-form .pageclip-form__success__message {
+    width: 100%;
+    max-width: 420px;
+    font-size: inherit;
+    animation: none;
+}
+
+.contact-success {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contact-success__icon {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 54px;
+    height: 54px;
+    margin-bottom: 16px;
+    border-radius: 50%;
+    background: var(--status-done);
+}
+
+.contact-success__icon::after {
+    content: '';
+    width: 12px;
+    height: 22px;
+    border-right: 3px solid var(--neutral-white);
+    border-bottom: 3px solid var(--neutral-white);
+    transform: rotate(45deg) translate(-2px, -2px);
+}
+
+.contact-success h3 {
+    margin: 0 0 8px;
+    color: var(--status-done-dark);
+    font-size: 1.25rem;
+}
+
+.contact-success p {
+    margin: 0;
+    color: var(--neutral-600);
+    font-size: 0.88rem;
+    line-height: 1.55;
+}
+
+.contact-success__reset {
+    margin-top: 20px;
+    padding: 10px 16px;
+    border: 1px solid var(--status-done);
+    border-radius: var(--radius-sm);
+    color: var(--status-done-dark);
+    background: var(--neutral-white);
+    font: inherit;
+    font-size: 0.78rem;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.contact-success__reset:hover {
+    color: var(--neutral-white);
+    background: var(--status-done-dark);
+}
+
 .contact-whatsapp {
     padding: 28px 24px;
 }

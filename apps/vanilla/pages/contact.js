@@ -5,6 +5,56 @@ const WHATSAPP_NUMBER = '51900516057';
 const WHATSAPP_MESSAGE = [
     'Hola, te contacto desde OpenMad.',
 ].join(' ');
+const CONTACT_DAILY_LIMIT_KEY = 'openmad.contact.lastSent.v1';
+
+function getLocalDateKey() {
+    const date = new Date();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${date.getFullYear()}-${month}-${day}`;
+}
+
+function hasSentMessageToday() {
+    try {
+        return window.localStorage.getItem(CONTACT_DAILY_LIMIT_KEY) === getLocalDateKey();
+    } catch (error) {
+        return false;
+    }
+}
+
+function rememberMessageSentToday() {
+    try {
+        window.localStorage.setItem(CONTACT_DAILY_LIMIT_KEY, getLocalDateKey());
+    } catch (error) {
+        // El formulario continúa funcionando si el almacenamiento no está disponible.
+    }
+}
+
+function updateDailyLimitState(form) {
+    const limitReached = hasSentMessageToday();
+    const submitButton = form.querySelector('[type="submit"]');
+    const submitLabel = submitButton && submitButton.querySelector('.btn__label');
+    const notice = form.querySelector('[data-contact-limit]');
+
+    if (submitButton) submitButton.disabled = limitReached;
+    if (submitLabel) {
+        submitLabel.textContent = limitReached ? 'Límite diario alcanzado' : 'Enviar mensaje';
+    }
+    if (notice) {
+        notice.classList.toggle('contact-form__limit--reached', limitReached);
+        notice.textContent = limitReached
+            ? 'Ya enviaste un mensaje hoy. OpenMad es un proyecto estudiantil sin fines de lucro; limitamos los envíos para cuidar nuestros recursos gratuitos. ¡Gracias por comprender!'
+            : 'OpenMad es un proyecto estudiantil. Para no saturar nuestros recursos gratuitos, limitamos el envío a un mensaje por día.';
+        
+        if (limitReached && !window._contactEasterEggShown) {
+            console.log("%c¡Hola, colega desarrollador/a! 👩‍💻👨‍💻", "font-weight: bold; font-size: 16px; color: #ff0055;");
+            console.log("%cSabemos que puedes borrar el LocalStorage para saltarte esta validación. OpenMad es una iniciativa mantenida con mucho esfuerzo y usamos herramientas con cuotas gratuitas. Te pedimos de favor respetar el límite para ayudarnos a mantener el proyecto vivo. ¡Gracias por tu apoyo! ❤️", "font-size: 14px; color: #444;");
+            window._contactEasterEggShown = true;
+        }
+    }
+
+    return limitReached;
+}
 
 function facultyOptions() {
     return faculties
@@ -96,6 +146,9 @@ export function renderContact(container) {
               <span class="btn__label">Enviar mensaje</span>
               <i data-lucide="send"></i>
             </button>
+            <p class="contact-form__limit" data-contact-limit>
+              Puedes enviar un mensaje por día desde este navegador.
+            </p>
           </form>
         </article>
 
@@ -148,17 +201,48 @@ export function renderContact(container) {
     }
 
     const form = container.querySelector('.pageclip-form');
+    if (form) {
+        updateDailyLimitState(form);
+        form.addEventListener('submit', (event) => {
+            if (!hasSentMessageToday()) return;
+
+            event.preventDefault();
+            event.stopImmediatePropagation();
+            updateDailyLimitState(form);
+        }, true);
+    }
+
     if (form && window.Pageclip) {
         window.Pageclip.form(form, {
             onSubmit: function (event) { },
             onResponse: function (error, response) {
                 if (!error) {
                     form.reset();
+                    rememberMessageSentToday();
+                    updateDailyLimitState(form);
+                    form.classList.add('contact-form--sent');
                     schoolSelect.disabled = true;
                     schoolSelect.innerHTML = '<option value="">Primero elige una facultad</option>';
                 }
             },
-            successTemplate: '<span>¡Mensaje enviado con éxito!</span>'
+            successTemplate: `
+              <div class="contact-success" role="status" aria-live="polite">
+                <span class="contact-success__icon" aria-hidden="true"></span>
+                <h3>Mensaje enviado</h3>
+                <p>Gracias por escribir. Revisaremos tu mensaje y responderemos al correo indicado. Al ser un proyecto estudiantil, limitamos los envíos a uno por día. ¡Gracias por el apoyo!</p>
+                <button type="button" class="contact-success__reset">Volver al formulario</button>
+              </div>
+            `
+        });
+
+        container.addEventListener('click', (event) => {
+            const resetButton = event.target.closest('.contact-success__reset');
+            if (!resetButton) return;
+
+            const success = resetButton.closest('.pageclip-form__success');
+            if (success) success.remove();
+            form.classList.remove('contact-form--sent');
+            form.querySelector('#name')?.focus();
         });
     }
 }
