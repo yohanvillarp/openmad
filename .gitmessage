@@ -1,0 +1,20 @@
+# <tipo>(<alcance opcional>): <descripción breve e imperativa>
+# 
+# [Cuerpo detallado. Explica QUÉ cambia y POR QUÉ, no cómo]
+# 
+# [Pie: Referencias a issues, breaking changes, etc. Ej: "Cierra #123"]
+
+# --- Tipos de Commits Convencionales ---
+# feat     : Nueva característica
+# fix      : Corrección de un error (bug)
+# docs     : Cambios exclusivos en la documentación (README, comentarios)
+# style    : Cambios de formato (espacios, punto y coma) que no afectan el código
+# refactor : Cambio en el código que no corrige un bug ni añade una característica
+# perf     : Cambio en el código que mejora el rendimiento
+# test     : Añadir pruebas o corregir pruebas existentes
+# build    : Cambios que afectan al sistema de compilación o dependencias externas
+# ci       : Cambios en los archivos y scripts de integración continua
+# chore    : Tareas rutinarias (actualización de herramientas, etc)
+# revert   : Revertir un commit anterior
+# 
+# Nota: Líneas que empiezan con '#' son ignoradas por git.

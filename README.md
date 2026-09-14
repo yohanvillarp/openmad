@@ -1,50 +1,50 @@
-# OpenMad
+# 🎓 OpenMad
 
-OpenMad es una guía web para estudiantes de la Universidad Nacional Amazónica de Madre de Dios. Organiza procesos académicos en rutas, módulos, pasos y mini tareas para que cada estudiante pueda consultar instrucciones y registrar su avance.
+Bienvenido al repositorio oficial de **OpenMad**, una plataforma web moderna diseñada para simplificar y optimizar el acceso a la información sobre los trámites académicos y administrativos para los estudiantes de la UNAMAD.
 
-El proyecto se encuentra en fase beta y no está afiliado ni respaldado oficialmente por la UNAMAD.
+**Sitio Oficial:** [openmad.nikelyh.tech](https://openmad.nikelyh.tech)  
+**Entorno de Pruebas:** [openmad.vercel.app](https://openmad.vercel.app)
 
-## Funciones principales
+---
 
-- Rutas académicas organizadas por módulos y pasos.
-- Guía de prácticas preprofesionales para Ingeniería de Sistemas e Informática.
-- Mini tareas que pueden marcarse y desmarcarse.
-- Registro local de pasos, módulos, rutas y XP.
-- Buscador de rutas, módulos e instrucciones.
-- Perfil con el resumen del progreso.
-- Diseño adaptable para computadoras y dispositivos móviles.
+## Arquitectura del Monorepo
 
-Actualmente, la ruta de prácticas preprofesionales contiene información detallada. Las demás rutas permanecen bloqueadas hasta que su contenido sea publicado.
+Este proyecto está organizado en un formato de **Monorepo**. Esto nos permite mantener de forma centralizada todas las aplicaciones y servicios que forman parte del ecosistema de OpenMad.
 
-## Tecnologías
-
-El proyecto utiliza HTML, CSS y JavaScript sin frameworks ni backend. El progreso se almacena en `localStorage` dentro del navegador.
-
-## Ejecución local
-
-Puedes abrir `index.html` directamente o iniciar un servidor estático desde la carpeta del proyecto:
-
-```bash
-python -m http.server 8000
+```text
+openmad/
+├── apps/
+│   ├── vanilla/     # (Beta Actual) Interfaz web ultrarrápida en Vanilla JS + Vite
+│   ├── web/         # (Próximamente) Aplicación web principal en React
+│   └── mobile/      # (Próximamente) Aplicación nativa para dispositivos móviles
+├── backend/         # (Próximamente) API y servicios backend
+└── docs/            # Documentación general y guías de arquitectura
 ```
 
-Después, abre `http://localhost:8000` en el navegador.
+## Configuración Inicial Rápida
 
-## Organización
+Si deseas correr el proyecto localmente o contribuir al código fuente, sigue estos pasos desde la raíz del proyecto.
 
-- `mock-*`: contenido de rutas, módulos, pasos y preguntas.
-- `util-*`: progreso, XP, búsqueda y utilidades compartidas.
-- `comp-*`: componentes reutilizables e interacciones.
-- `page-*`: vistas principales de la aplicación.
-- `style.css`: variables y estilos globales.
-- `app.css`: estilos de componentes y páginas.
+### Requisitos Previos
+- Node.js v18 o superior.
+- Git.
 
-## Consideraciones
+### Instalación
+```bash
+# 1. Clona el repositorio
+git clone https://github.com/tu-usuario/openmad.git
 
-Los costos, plazos, formatos y requisitos mostrados son referenciales. Antes de realizar un trámite, confirma la información mediante los canales oficiales de la universidad.
+# 2. Entra al directorio
+cd openmad
 
-Los datos de progreso permanecen únicamente en el navegador utilizado. Limpiar los datos del sitio o cambiar de navegador puede eliminar el avance guardado.
+# 3. Instala dependencias globales (incluye Husky y Commitlint)
+npm install
+```
 
-## Autor
+## ¿Cómo contribuir?
 
-Desarrollado por [Nikel](https://github.com/yohanvillarp).
+¡Las contribuciones son bienvenidas! Por favor, revisa nuestra [Guía de Contribución (CONTRIBUTING.md)](./CONTRIBUTING.md) para entender nuestras reglas de código, formato de Commits y plantillas de Pull Requests.
+
+## Licencia
+
+Este proyecto se distribuye bajo los términos de la Licencia MIT. Consulta el archivo [LICENSE](./LICENSE) para más detalles.

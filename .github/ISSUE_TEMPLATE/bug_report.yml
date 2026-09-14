@@ -1,0 +1,41 @@
+name: Reporte de Error
+description: Reporta un error o comportamiento inesperado
+title: "[BUG]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: "Gracias por tomarte el tiempo de reportar este problema."
+  - type: textarea
+    id: description
+    attributes:
+      label: Descripcion del Error
+      description: Una descripcion clara y concisa de cual es el problema.
+      placeholder: Por favor, describe el error detalladamente.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Pasos para reproducirlo
+      description: Pasos exactos que debemos seguir para recrear el problema.
+      placeholder: |
+        1. Navegar a '...'
+        2. Hacer click en '...'
+        3. Observar el error
+    validations:
+      required: true
+  - type: input
+    id: expected
+    attributes:
+      label: Comportamiento Esperado
+      description: Que esperabas que sucediera si el error no ocurriera.
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Entorno y Dispositivo
+      description: Por favor detalla el navegador, sistema operativo y version (ej. Safari en iOS, Chrome en Windows 11).
+    validations:
+      required: true

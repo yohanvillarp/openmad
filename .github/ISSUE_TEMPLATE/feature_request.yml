@@ -1,0 +1,31 @@
+name: Solicitud de Caracteristica
+description: Propone una nueva funcionalidad o mejora general
+title: "[FEAT]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: "Gracias por proponer ideas para mejorar la plataforma."
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problema relacionado
+      description: ¿Esta funcionalidad resuelve algun problema actual que tienen los usuarios?
+      placeholder: Una descripcion concisa del problema. Por ejemplo, "El usuario pierde mucho tiempo haciendo..."
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: Solucion propuesta
+      description: Describe exactamente que deberia hacer esta nueva caracteristica.
+      placeholder: Describe la solucion.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternativas consideradas
+      description: Describe brevemente alternativas tecnicas o visuales que podrian usarse en lugar de tu solucion principal.
+    validations:
+      required: false
