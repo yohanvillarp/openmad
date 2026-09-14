@@ -182,7 +182,7 @@ export function renderContact(container) {
 
         schoolSelect.innerHTML = faculty
             ? `<option value="">Selecciona una escuela</option>${faculty.schools
-                .map((school) => `<option value="${school}">${school}</option>`)
+                .map((school) => `<option value="${school.label}">${school.label}</option>`)
                 .join('')}`
             : '<option value="">Primero elige una facultad</option>';
 

@@ -1,4 +1,4 @@
-import { faculties } from './careers.js';
+import { faculties, getSchoolById } from './careers.js';
 
 export const routeIntro = 'Elige un proceso académico y revisa su alcance, contenido disponible y estado de avance.';
 export const DEFAULT_ROUTE_SCOPE = 'Ámbito por confirmar';
@@ -16,6 +16,7 @@ export const routes = [
         summary: 'Gestiona los documentos, el desarrollo, el informe y la sustentación de tus prácticas preprofesionales.',
         color: '#0d9488',
         facultyId: 'ingenieria',
+        schoolId: 'sistemas-informatica',
         requirements: {
             id: 'requisitos-previos',
             kind: 'informational',
@@ -103,10 +104,14 @@ export function getRouteFaculty(route) {
     return faculties.find((faculty) => faculty.id === route.facultyId) || null;
 }
 
+export function getRouteSchool(route) {
+    if (!route || !route.schoolId) return null;
+    return getSchoolById(route.facultyId, route.schoolId);
+}
+
 export function getRouteScopeLabel(route) {
     const faculty = getRouteFaculty(route);
-    if (route && route.school) {
-        return faculty ? `${faculty.label} · ${route.school}` : route.school;
-    }
+    const school = getRouteSchool(route);
+    if (school) return school.label;
     return faculty ? faculty.label : DEFAULT_ROUTE_SCOPE;
 }

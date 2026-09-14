@@ -10,7 +10,7 @@ import { formatXp, getRouteXp } from '../utils/xp.js';
  *   summary?: string,
  *   color?: string,
  *   facultyId?: string,
- *   school?: string
+ *   schoolId?: string
  * }} route
  * @returns {string}
  */
@@ -24,7 +24,7 @@ export function renderRouteCard (route, options) {
     const progress = opts.progress || { done: 0, total: 0 };
     const color = route.color || (university && university.color) || '#22c55e';
     const scopeLabel = getRouteScopeLabel(route);
-    const scopeStatus = route.facultyId || route.school ? 'confirmed' : 'pending';
+    const scopeStatus = route.facultyId || route.schoolId ? 'confirmed' : 'pending';
     let metaParts = [];
     const xpLabel = formatXp(getRouteXp(route));
     if (status === 'done') {

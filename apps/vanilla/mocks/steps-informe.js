@@ -24,7 +24,15 @@ export const steps_informe_practicas = [
         id: 'redactar-informe',
         label: 'Redactar el informe',
         summary: 'Redacta el informe con información verificable y comprueba su estructura, horas, citas, evidencias, formato y documentos de sustento.',
+        driveUrl: 'https://drive.google.com/file/d/1l5ZhUNbjhYkr1kTga0aGOKcgmU8hS4Df/view?usp=sharing',
         guide: {
+            hint: 'Consulta el reglamento completo para revisar con exactitud todas las normas. Esta sección ofrece solo un resumen práctico y no reemplaza el documento.',
+            driveLabel: 'Abrir reglamento en Drive',
+            files: [
+                {
+                    label: 'Reglamento de prácticas preprofesionales de la Escuela Profesional de Ingeniería de Sistemas e Informática'
+                }
+            ],
             heading: 'Redacción y control final del informe',
             intro: 'La plantilla descargada incluye la estructura base y varias instrucciones de llenado. Complétala respetando su organización y utiliza esta lista para verificar los requisitos del reglamento y las observaciones formuladas en informes anteriores. Si utilizas otra plantilla, comprueba que incluya todos estos elementos.',
             sections: [
