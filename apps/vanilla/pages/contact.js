@@ -14,7 +14,7 @@ function facultyOptions() {
 
 export function renderContact(container) {
     const siteKey = import.meta.env.VITE_PAGECLIP_SITE_KEY || 'fY0b158yF2PsTT90FruQdJ5E0mzGZ6aG';
-    const actionUrl = `https://send.pageclip.co/${siteKey}/contacto`;
+    const actionUrl = `https://send.pageclip.co/${siteKey}/default`;
     const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
 
     container.innerHTML = `
