@@ -105,4 +105,4 @@ Para más detalles, consulte la [Guía de Contribución](CONTRIBUTING.md).
 
 ## Licencia
 
-Este proyecto se distribuye bajo los términos de la Licencia MIT. Para mayor información, consulte el archivo [LICENSE](LICENSE).
+Este proyecto se distribuye bajo los términos de la Licencia Apache 2.0. Para mayor información, consulte el archivo [LICENSE](LICENSE).
