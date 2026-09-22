@@ -34,6 +34,23 @@ updates:
         patterns:
           - "*"
 
+  # Dependencias de la Aplicacion Manager (React + Vite) -> develop
+  - package-ecosystem: "npm"
+    directory: "/apps/manager"
+    target-branch: "develop"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 3
+    commit-message:
+      prefix: "chore(deps-manager)"
+    ignore:
+      - dependency-name: "typescript"
+        update-types: ["version-update:semver-major"]
+    groups:
+      dependencias-manager:
+        patterns:
+          - "*"
+
   # Dependencias del Cliente Web Vanilla (Beta) -> develop
   - package-ecosystem: "npm"
     directory: "/apps/vanilla"

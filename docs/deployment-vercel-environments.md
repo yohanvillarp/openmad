@@ -68,10 +68,11 @@ Este proyecto ya existe en tu cuenta de Vercel y sirve la version publica:
    - **Root Directory:** Verificar que apunte a `apps/vanilla`.
 2. Ir a **Settings > Git**:
    - **Production Branch:** Debe ser `main`.
-   - **Ignored Build Step:** Seleccionar *Run a custom bash script* e ingresar:
+   - **Ignored Build Step:** Seleccionar *Run a custom command* (o *Run a custom bash script*) e ingresar:
      ```bash
-     ./scripts/vercel-ignore-build.sh apps/vanilla
+     git diff --quiet HEAD^ HEAD .
      ```
+     *(Nota: Como el Root Directory ya esta configurado en apps/vanilla, el punto `.` evalua exclusivamente los cambios dentro de esa aplicacion).*
 3. Ir a **Settings > Domains**:
    - Verificar que este asignado el dominio `openmad.nikelyh.tech`.
 
@@ -94,9 +95,9 @@ Crear el nuevo proyecto para la aplicacion moderna React (`apps/web`):
 6. Una vez creado el proyecto, ingresar a **Settings > Git**:
    - **Production Branch:** Cambiar de `main` a `develop`.
      *(Importante: Al definir `develop` como Production Branch en este proyecto, cualquier push a `develop` actualizara de inmediato el dominio permanente de staging sin URLs efimeras).*
-   - **Ignored Build Step:** Seleccionar *Run a custom bash script* e ingresar:
+   - **Ignored Build Step:** Seleccionar *Run a custom command* e ingresar:
      ```bash
-     ./scripts/vercel-ignore-build.sh apps/web
+     git diff --quiet HEAD^ HEAD .
      ```
 7. Ir a **Settings > Domains**:
    - Agregar el dominio: `dev.openmad.nikelyh.tech`.
