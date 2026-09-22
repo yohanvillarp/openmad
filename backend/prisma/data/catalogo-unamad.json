@@ -1,0 +1,86 @@
+{
+  "version": "1.0.0",
+  "universidad": {
+    "codigo": "UNAMAD",
+    "nombre": "Universidad Nacional Amazónica de Madre de Dios",
+    "colorHex": "#22c55e"
+  },
+  "facultades": [
+    {
+      "codigo": "ingenieria",
+      "nombre": "Facultad de Ingeniería",
+      "escuelas": [
+        { "codigo": "sistemas-informatica", "nombre": "Ingeniería de Sistemas e Informática" },
+        { "codigo": "agroindustrial", "nombre": "Ingeniería Agroindustrial" },
+        { "codigo": "forestal-medio-ambiente", "nombre": "Ingeniería Forestal y Medio Ambiente" }
+      ]
+    },
+    {
+      "codigo": "educacion",
+      "nombre": "Facultad de Educación",
+      "escuelas": [
+        { "codigo": "educacion-matematica-computacion", "nombre": "Educación Matemática y Computación" },
+        { "codigo": "derecho-ciencias-politicas", "nombre": "Derecho y Ciencias Políticas" }
+      ]
+    },
+    {
+      "codigo": "empresariales",
+      "nombre": "Facultad de Ciencias Empresariales",
+      "escuelas": [
+        { "codigo": "administracion-negocios-internacionales", "nombre": "Administración y Negocios Internacionales" },
+        { "codigo": "contabilidad-finanzas", "nombre": "Contabilidad y Finanzas" },
+        { "codigo": "ecoturismo", "nombre": "Ecoturismo" }
+      ]
+    },
+    {
+      "codigo": "salud",
+      "nombre": "Facultad de Ciencias de la Salud y Biológicas",
+      "escuelas": [
+        { "codigo": "enfermeria", "nombre": "Enfermería" },
+        { "codigo": "medicina-humana", "nombre": "Medicina Humana" },
+        { "codigo": "medicina-veterinaria-zootecnia", "nombre": "Medicina Veterinaria y Zootecnia" },
+        { "codigo": "biologia", "nombre": "Biología" },
+        { "codigo": "psicologia", "nombre": "Psicología" }
+      ]
+    }
+  ],
+  "tramites": [
+    {
+      "codigo": "practicas-preprofesionales",
+      "titulo": "Prácticas preprofesionales",
+      "resumen": "Gestiona los documentos, el desarrollo, el informe y la sustentación de tus prácticas preprofesionales.",
+      "colorHex": "#0d9488",
+      "facultadCodigo": "ingenieria",
+      "escuelaCodigo": "sistemas-informatica",
+      "requisitos": [
+        {
+          "titulo": "Créditos aprobados según carrera profesional",
+          "descripcion": "Tener aprobado el total de créditos establecidos en el reglamento de su carrera para iniciar prácticas.",
+          "obligatorio": true,
+          "orden": 1
+        }
+      ]
+    },
+    {
+      "codigo": "tesis",
+      "titulo": "Tesis",
+      "resumen": "Del plan a la sustentación: asesoría, documentos y plazos en un solo hilo, sin adivinar el siguiente paso.",
+      "colorHex": "#1e3a8a",
+      "requisitos": []
+    },
+    {
+      "codigo": "grado-bachiller",
+      "titulo": "Grado de bachiller",
+      "resumen": "El cierre de la carrera: requisitos de egreso, constancias y pagos para que te reconozcan el grado.",
+      "colorHex": "#22c55e",
+      "requisitos": []
+    },
+    {
+      "codigo": "titulo-profesional",
+      "titulo": "Título profesional",
+      "resumen": "Después del bachiller: la ruta para titularte, con formatos, costos referenciales y lo que hay que presentar.",
+      "colorHex": "#f54477",
+      "requisitos": []
+    }
+  ]
+}
