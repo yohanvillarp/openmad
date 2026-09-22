@@ -65,8 +65,10 @@ Utilizamos un archivo `.editorconfig` en la raíz del proyecto para unificar el 
 ### 3. Estrategia de Ramas (Git Branching)
 Seguimos un flujo de trabajo estándar basado en ramas de integración y producción:
 
-- **`main`**: Rama de **producción**. Contiene el código estable desplegado y validado. No se realizan commits directos en `main`.
-- **`develop`**: Rama principal de **desarrollo e integración**. Todo el trabajo activo del equipo se integra aquí mediante Pull Requests.
+- **`main`**: Rama de **producción**. Contiene el código estable desplegado y validado en `openmad.nikelyh.tech`. No se realizan commits directos en `main`.
+- **`develop`**: Rama principal de **desarrollo e integración**. Todo el trabajo activo del equipo se integra aquí mediante Pull Requests y se despliega de forma continua en el entorno de staging `dev.openmad.nikelyh.tech`.
+
+Para más detalles sobre la arquitectura de despliegues, dominios y control de builds en Vercel, consulta la [Guía de Despliegues y Entornos en Vercel](docs/deployment-vercel-environments.md).
 
 #### Flujo para Nuevas Características o Correcciones:
 1. Asegúrate de estar en `develop` y con los últimos cambios:
