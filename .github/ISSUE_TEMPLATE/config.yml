@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Canal de Soporte y Preguntas
+    url: https://github.com/yohanvillarp/openmad/discussions
+    about: Si tienes dudas generales o consultas sobre como contribuir, abre un hilo en Discusiones.
+  - name: Reporte de Vulnerabilidad de Seguridad
+    url: https://github.com/yohanvillarp/openmad/security/advisories/new
+    about: Para reportar fallos de seguridad o vulnerabilidades de forma privada y confidencial.
