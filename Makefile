@@ -2,7 +2,7 @@
 # OpenMad Monorepo - Makefile de Comandos y Automatizacion
 # ==============================================================================
 # Este archivo unifica los comandos de instalacion, desarrollo, compilacion,
-# calidad de codigo y base de datos para todo el monorepo.
+# calidad de codigo, base de datos y generadores para todo el monorepo.
 # Compatible con Windows, macOS y Linux.
 #
 # Uso:
@@ -13,7 +13,8 @@
 .DEFAULT_GOAL := help
 .PHONY: help install dev-backend dev-web dev-manager dev-vanilla build build-backend \
         build-web build-manager build-vanilla lint test test-e2e check audit \
-        db-generate db-migrate db-push db-studio db-seed clean
+        db-generate db-migrate db-push db-studio db-seed clean \
+        new-module new-slice branch-feature branch-fix
 
 # ------------------------------------------------------------------------------
 # 1. AYUDA Y DOCUMENTACION
@@ -46,6 +47,14 @@ help:
 	@echo    make test            Ejecuta pruebas unitarias del backend
 	@echo    make test-e2e        Ejecuta pruebas e2e del backend
 	@echo    make audit           Audita vulnerabilidades npm en el monorepo
+	@echo.
+	@echo  Generadores de Codigo (Scaffolding DX):
+	@echo    make new-module name=xyz   Crea un modulo backend hexagonal completo
+	@echo    make new-slice app=web layer=features name=xyz   Crea una slice FSD
+	@echo.
+	@echo  Asistente de Ramas (Git Flow desde develop):
+	@echo    make branch-feature name=xyz  Actualiza develop y crea feature/xyz
+	@echo    make branch-fix name=xyz      Actualiza develop y crea fix/xyz
 	@echo.
 	@echo  Base de Datos y Prisma:
 	@echo    make db-generate     Genera el cliente Prisma ORM
@@ -148,7 +157,31 @@ audit:
 	npm --prefix apps/vanilla audit
 
 # ------------------------------------------------------------------------------
-# 6. BASE DE DATOS Y PRISMA
+# 6. GENERADORES DE CODIGO (SCAFFOLDING DX)
+# ------------------------------------------------------------------------------
+
+new-module:
+	@node scripts/scaffold-backend-module.js $(name)
+
+new-slice:
+	@node scripts/scaffold-fsd-slice.js $(app) $(layer) $(name)
+
+# ------------------------------------------------------------------------------
+# 7. ASISTENTE DE RAMAS (GIT FLOW)
+# ------------------------------------------------------------------------------
+
+branch-feature:
+	git checkout develop
+	git pull origin develop
+	git checkout -b feature/$(name)
+
+branch-fix:
+	git checkout develop
+	git pull origin develop
+	git checkout -b fix/$(name)
+
+# ------------------------------------------------------------------------------
+# 8. BASE DE DATOS Y PRISMA
 # ------------------------------------------------------------------------------
 
 db-generate:
@@ -167,7 +200,7 @@ db-seed:
 	npm --prefix backend run db:seed
 
 # ------------------------------------------------------------------------------
-# 7. LIMPIEZA
+# 9. LIMPIEZA
 # ------------------------------------------------------------------------------
 
 clean:

@@ -1,6 +1,7 @@
 {
   "name": "openmad",
   "private": true,
+  "type": "module",
   "packageManager": "npm@11.11.0",
   "workspaces": [
     "apps/*",
@@ -10,6 +11,8 @@
     "build": "turbo run build",
     "lint": "turbo run lint",
     "test": "turbo run test",
+    "gen:module": "node scripts/scaffold-backend-module.js",
+    "gen:slice": "node scripts/scaffold-fsd-slice.js",
     "prepare": "node -e \"if (!process.env.CI && !process.env.VERCEL) { try { require('child_process').execSync('npx --no-install husky', { stdio: 'inherit' }); } catch {} }\""
   },
   "devDependencies": {
