@@ -1,6 +1,6 @@
 # Guía de Contribución para OpenMad
 
-¡Gracias por tu interés en contribuir a OpenMad! 🎉 
+Gracias por su interés en contribuir a OpenMad.
 
 Este documento describe nuestras convenciones de desarrollo, la estructura del proyecto y los pasos necesarios para configurar tu entorno local.
 
@@ -62,12 +62,41 @@ Ejemplos:
 ### 2. Estilo de Código (EditorConfig)
 Utilizamos un archivo `.editorconfig` en la raíz del proyecto para unificar el formato (2 espacios de indentación, UTF-8, etc.). Asegúrate de que tu editor de código (como VS Code) tenga instalada la extensión de EditorConfig para que respete estas reglas automáticamente.
 
-### 3. Ramas (Branches)
-Crea una rama descriptiva a partir de `main` antes de realizar tus cambios:
-```bash
-git checkout -b feature/nuevo-diseño
-# o
-git checkout -b fix/error-login
-```
+### 3. Estrategia de Ramas (Git Branching)
+Seguimos un flujo de trabajo estándar basado en ramas de integración y producción:
+
+- **`main`**: Rama de **producción**. Contiene el código estable desplegado y validado. No se realizan commits directos en `main`.
+- **`develop`**: Rama principal de **desarrollo e integración**. Todo el trabajo activo del equipo se integra aquí mediante Pull Requests.
+
+#### Flujo para Nuevas Características o Correcciones:
+1. Asegúrate de estar en `develop` y con los últimos cambios:
+   ```bash
+   git checkout develop
+   git pull origin develop
+   ```
+2. Crea una rama descriptiva a partir de `develop`:
+   ```bash
+   git checkout -b feature/backend-hexagonal-architecture
+   # o para correcciones:
+   git checkout -b fix/error-autenticacion
+   ```
+3. Realiza tus cambios y haz commits siguiendo la convención de Conventional Commits.
+4. Sube tu rama al repositorio remoto y abre un **Pull Request hacia `develop`**:
+   ```bash
+   git push -u origin feature/backend-hexagonal-architecture
+   ```
+5. Una vez aprobado y pasados los tests del CI, se fusionará a `develop`. Las versiones de producción se promoverán posteriormente de `develop` a `main`.
+
+### 4. Base de Datos y Modelos (Nomenclatura en Español)
+En el backend (`backend/`), todos los nombres de tablas y columnas en la base de datos (PostgreSQL / Prisma) deben estar estrictamente en **español** respetando el formato estándar:
+- **Tablas:** En plural y `snake_case` (e.g. `tramites`, `requisitos_tramite`).
+- **Columnas:** En `snake_case` y en español (e.g. `codigo`, `fecha_creacion`, `fecha_actualizacion`).
+- **Prisma:** Se debe mapear los modelos y campos usando `@@map("nombre_tabla")` y `@map("nombre_columna")`. Para más detalles, consulta [.agents/rules/database-conventions.md](.agents/rules/database-conventions.md).
+
+### 5. Seguridad y Manejo de Variables de Entorno
+- **Cero Secretos en Git:** Nunca agregues archivos `.env`, credenciales reales o llaves privadas al control de versiones.
+- **Uso de `.env.example`:** Modifica y consulta siempre `.env.example` como referencia para configurar tus variables locales.
+- **Datos de Prueba:** Los datos públicos institucionales residen en `backend/prisma/data/catalogo-unamad.json`. Si utilizas datasets privados, colócalos en `backend/prisma/data/local/` (directorio ignorado en Git).
+- **Validación Automática:** El proyecto cuenta con un guardián en pre-commit y un flujo de auditoría con Gitleaks en GitHub Actions para proteger al equipo contra filtraciones accidentales.
 
 ¡Gracias de nuevo por contribuir a mejorar los procesos académicos para los estudiantes de la UNAMAD!
