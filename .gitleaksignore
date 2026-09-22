@@ -1,0 +1,2 @@
+# Gitleaks ignore list para falsos positivos y commits historicos conocidos
+8f81ef58aae65f02a4b480f69489e18df886b1f5:apps/vanilla/README.md:generic-api-key:58

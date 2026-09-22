@@ -1,0 +1,11 @@
+# Configuracion oficial de Gitleaks para OpenMad
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Permitir plantillas de variables de entorno y documentacion de ejemplo"
+paths = [
+  '''apps/vanilla/README\.md''',
+  '''apps/vanilla/\.env\.example''',
+  '''backend/\.env\.example''',
+]

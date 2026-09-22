@@ -55,8 +55,9 @@ apps/vanilla/
 3. Configurar las variables de entorno:
    Crear un archivo `.env` en la raíz de `apps/vanilla/` y especificar la clave de integración de Pageclip:
    ```env
-   VITE_PAGECLIP_SITE_KEY=fY0b158yF2PsTT90FruQdJ5E0mzGZ6aG
+   VITE_PAGECLIP_SITE_KEY=tu_clave_de_pageclip_aqui
    ```
+   *Nota: Este paso es opcional en desarrollo local*
 
 4. Iniciar el servidor local de desarrollo:
    ```bash
