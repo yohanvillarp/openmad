@@ -1,10 +1,28 @@
 # Dependencias
 node_modules/
 
-# Entornos
+# Variables de entorno y secretos (permitiendo unicamente plantillas de ejemplo)
 .env
-.env.local
-.env.*.local
+.env.*
+!.env.example
+*.env
+
+# Certificados, llaves y credenciales privadas
+*.pem
+*.key
+*.pfx
+*.pkcs12
+credentials*.json
+service-account*.json
+*.keystore
+
+# Volcados y respaldos locales de base de datos
+*.sql
+*.dump
+*.sqlite
+*.sqlite3
+*.db
+*.backup
 
 # Logs
 logs

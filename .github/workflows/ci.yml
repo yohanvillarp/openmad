@@ -2,34 +2,48 @@ name: Integracion Continua (CI)
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "develop" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "main", "develop" ]
 
 jobs:
-  build:
-    name: Compilacion y Pruebas
+  validate:
+    name: Compilacion, Linter y Pruebas
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        node-version: [20.x]
+        node-version: [24.x]
 
     steps:
-    - name: Clonar el repositorio
-      uses: actions/checkout@v4
+      - name: Clonar el repositorio
+        uses: actions/checkout@v4
 
-    - name: Configurar Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v4
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
+      - name: Configurar Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
 
-    - name: Instalar dependencias globales
-      run: npm install
+      - name: Instalar dependencias globales del monorepo
+        run: npm install
 
-    - name: Construir la aplicacion Vanilla JS
-      working-directory: ./apps/vanilla
-      run: |
-        npm install
-        npm run build
+      - name: Construir aplicacion web (Vanilla JS)
+        working-directory: ./apps/vanilla
+        run: |
+          npm install
+          npm run build
+
+      - name: Construir aplicacion web principal (React + Vite)
+        working-directory: ./apps/web
+        run: |
+          npm install
+          npm run build
+
+      - name: Validar backend (Linter, Pruebas y Compilacion)
+        working-directory: ./backend
+        run: |
+          npm install
+          npm run lint
+          npm test
+          npm run build

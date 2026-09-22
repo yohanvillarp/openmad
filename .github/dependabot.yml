@@ -1,7 +1,71 @@
 version: 2
 updates:
+  # Dependencias del Backend (NestJS API) -> develop
   - package-ecosystem: "npm"
-    directory: "/"
+    directory: "/backend"
+    target-branch: "develop"
     schedule:
       interval: "weekly"
-    open-pull-requests-limit: 10
+    open-pull-requests-limit: 3
+    commit-message:
+      prefix: "chore(deps-backend)"
+    groups:
+      dependencias-backend:
+        patterns:
+          - "*"
+
+  # Dependencias de la Aplicacion Web Principal (React + Vite) -> develop
+  - package-ecosystem: "npm"
+    directory: "/apps/web"
+    target-branch: "develop"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 3
+    commit-message:
+      prefix: "chore(deps-web)"
+    groups:
+      dependencias-web:
+        patterns:
+          - "*"
+
+  # Dependencias del Cliente Web Vanilla (Beta) -> develop
+  - package-ecosystem: "npm"
+    directory: "/apps/vanilla"
+    target-branch: "develop"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 2
+    commit-message:
+      prefix: "chore(deps-vanilla)"
+    groups:
+      dependencias-vanilla:
+        patterns:
+          - "*"
+
+  # Dependencias de la Raiz del Monorepo (Husky, Commitlint) -> develop
+  - package-ecosystem: "npm"
+    directory: "/"
+    target-branch: "develop"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 2
+    commit-message:
+      prefix: "chore(deps-root)"
+    groups:
+      dependencias-monorepo:
+        patterns:
+          - "*"
+
+  # Acciones de GitHub Workflows (CI, Gitleaks) -> develop
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    target-branch: "develop"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 2
+    commit-message:
+      prefix: "chore(ci)"
+    groups:
+      github-actions:
+        patterns:
+          - "*"
