@@ -1,2 +1,26 @@
-cd apps/vanilla
-npm run build
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# 1. Verificacion preventiva contra inclusion accidental de archivos de entorno o credenciales
+sensitive_files=$(git diff --cached --name-only | grep -E '(^|/)\.env($|\.[^e]|.*\.local$|.*\.production$|.*\.staging$)|.*\.(key|pem|pfx|pkcs12)$|(^|/)credentials.*\.json$' | grep -v '\.env\.example$' || true)
+
+if [ -n "$sensitive_files" ]; then
+  echo "---------------------------------------------------------"
+  echo "ALERTA DE SEGURIDAD: Commit cancelado."
+  echo "Se detectaron archivos sensibles preparados para subir:"
+  echo "$sensitive_files"
+  echo ""
+  echo "Por seguridad, no debes subir archivos de entorno o llaves a GitHub."
+  echo "Usa .env.example como plantilla de referencia."
+  echo "---------------------------------------------------------"
+  exit 1
+fi
+
+# 2. Verificacion de compilacion del frontend
+echo "Verificando calidad y compilacion en apps/vanilla..."
+npm --prefix apps/vanilla run build
+
+# 3. Verificacion de calidad y pruebas del backend
+echo "Verificando linter y pruebas en backend..."
+npm --prefix backend run lint
+npm --prefix backend test
