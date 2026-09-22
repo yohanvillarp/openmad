@@ -10,7 +10,7 @@
     "build": "turbo run build",
     "lint": "turbo run lint",
     "test": "turbo run test",
-    "prepare": "husky"
+    "prepare": "node -e \"if (!process.env.CI && !process.env.VERCEL) { try { require('child_process').execSync('npx --no-install husky', { stdio: 'inherit' }); } catch {} }\""
   },
   "devDependencies": {
     "@commitlint/cli": "^21.2.2",
