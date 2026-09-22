@@ -1,6 +1,15 @@
 # Dependencias
 node_modules/
 
+# Cache de compiladores y monorepo
+.turbo/
+.cache/
+
+# Compilaciones y reportes de cobertura
+dist/
+coverage/
+*.lcov
+
 # Variables de entorno y secretos (permitiendo unicamente plantillas de ejemplo)
 .env
 .env.*

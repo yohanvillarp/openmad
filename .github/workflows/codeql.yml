@@ -1,0 +1,43 @@
+name: Analisis de Seguridad CodeQL (SAST)
+
+on:
+  push:
+    branches: [ "main", "develop" ]
+  pull_request:
+    branches: [ "main", "develop" ]
+  schedule:
+    - cron: "0 6 * * 1"
+
+permissions:
+  actions: read
+  contents: read
+  security-events: write
+
+jobs:
+  analyze:
+    name: Escaneo de Seguridad de Codigo
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    strategy:
+      fail-fast: false
+      matrix:
+        language: [ "javascript-typescript" ]
+
+    steps:
+      - name: Clonar repositorio
+        uses: actions/checkout@v7
+
+      - name: Inicializar CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: ${{ matrix.language }}
+          queries: +security-and-quality
+
+      - name: Auto-construccion
+        uses: github/codeql-action/autobuild@v3
+
+      - name: Ejecutar Analisis CodeQL
+        uses: github/codeql-action/analyze@v3
+        with:
+          category: "/language:${{ matrix.language }}"
