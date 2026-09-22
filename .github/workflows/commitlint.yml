@@ -1,0 +1,21 @@
+name: Validacion de Commits (Commitlint)
+
+on:
+  pull_request:
+    branches: [ "main", "develop" ]
+
+jobs:
+  commitlint:
+    name: Validar Conventional Commits
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clonar repositorio
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Validar historial de commits del PR
+        uses: wagoid/commitlint-github-action@v6
+        with:
+          configFile: .commitlintrc.json
+          failOnWarnings: false
