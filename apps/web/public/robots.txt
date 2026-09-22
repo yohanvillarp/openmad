@@ -1,0 +1,4 @@
+# robots.txt for Staging / Development environment
+# Protects search engines from indexing development mocks and unverified features.
+User-agent: *
+Disallow: /
