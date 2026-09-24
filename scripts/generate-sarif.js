@@ -4,8 +4,8 @@
  * Compatible con GitHub Code Scanning (upload-sarif action)
  */
 
-import { writeFileSync, existsSync, readFileSync } from 'node:fs';
-import { resolve, relative } from 'node:path';
+import { writeFileSync } from 'node:fs';
+import { resolve } from 'node:path';
 
 const SARIF_SCHEMA = 'https://json.schemastore.org/sarif-2.1.0.json';
 const SARIF_VERSION = '2.1.0';
