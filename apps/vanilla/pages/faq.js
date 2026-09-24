@@ -10,7 +10,7 @@ export function renderFaq (container) {
     container.innerHTML = `
     <section class="page page--faq">
       <header class="faq-intro">
-        <h1 class="faq-intro__title">Preguntas frecuentes</h1>
+        <h1 class="faq-intro__title">Preguntas frecuentes sobre trámites en la UNAMAD</h1>
       </header>
       <div class="faq-list">
         ${items}

@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Host
+Host: https://openmad.nikelyh.tech
+
+# Sitemap
+Sitemap: https://openmad.nikelyh.tech/sitemap.xml

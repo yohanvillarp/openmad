@@ -45,12 +45,6 @@ function updateDailyLimitState(form) {
         notice.textContent = limitReached
             ? 'Ya enviaste un mensaje hoy. OpenMad es un proyecto estudiantil sin fines de lucro; limitamos los envíos para cuidar nuestros recursos gratuitos. ¡Gracias por comprender!'
             : 'OpenMad es un proyecto estudiantil. Para no saturar nuestros recursos gratuitos, limitamos el envío a un mensaje por día.';
-        
-        if (limitReached && !window._contactEasterEggShown) {
-            console.log("%c¡Hola, colega desarrollador/a! 👩‍💻👨‍💻", "font-weight: bold; font-size: 16px; color: #ff0055;");
-            console.log("%cSabemos que puedes borrar el LocalStorage para saltarte esta validación. OpenMad es una iniciativa mantenida con mucho esfuerzo y usamos herramientas con cuotas gratuitas. Te pedimos de favor respetar el límite para ayudarnos a mantener el proyecto vivo. ¡Gracias por tu apoyo! ❤️", "font-size: 14px; color: #444;");
-            window._contactEasterEggShown = true;
-        }
     }
 
     return limitReached;
@@ -71,7 +65,7 @@ export function renderContact(container) {
     <section class="page page--contacto">
       <header class="contact-intro">
         <p class="contact-intro__eyebrow">Soporte y sugerencias</p>
-        <h1 class="contact-intro__title">Contacto</h1>
+        <h1 class="contact-intro__title">Contacto y Comunidad Estudiantil UNAMAD</h1>
         <p class="page__lead" style="color: var(--neutral-600); max-width: 650px;">
           Ayúdanos a mejorar OpenMad: reporta errores, sugiere trámites o aclara tus dudas. 
           Si es necesario, indícanos tu facultad y escuela. ¡Te responderemos pronto!
