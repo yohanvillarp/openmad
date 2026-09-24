@@ -24,11 +24,11 @@ jobs:
       - name: Configurar Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '24.x'
           cache: 'npm'
 
       - name: Instalar dependencias
-        run: npm ci
+        run: npm install
 
       - name: Generar archivo SARIF
         run: npm run sarif:generate
