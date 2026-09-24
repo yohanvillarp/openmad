@@ -1,0 +1,79 @@
+// Esquema Prisma para OpenMad (PostgreSQL)
+// REGLA OBLIGATORIA DEL PROYECTO:
+// Todos los nombres de tablas y campos de la base de datos deben estar en español
+// respetando el formato estándar (tablas y columnas en snake_case en PostgreSQL).
+// En Prisma se modela con PascalCase/camelCase en TypeScript y mapeos @map() y @@map().
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Facultad {
+  id                 String                @id @default(uuid())
+  codigo             String                @unique @map("codigo")
+  nombre             String                @map("nombre")
+  descripcion        String?               @map("descripcion")
+  activo             Boolean               @default(true) @map("activo")
+  fechaCreacion      DateTime              @default(now()) @map("fecha_creacion")
+  fechaActualizacion DateTime              @updatedAt @map("fecha_actualizacion")
+
+  escuelas           EscuelaProfesional[]
+  tramites           Tramite[]
+
+  @@map("facultades")
+}
+
+model EscuelaProfesional {
+  id                 String    @id @default(uuid())
+  facultadId         String    @map("facultad_id")
+  codigo             String    @unique @map("codigo")
+  nombre             String    @map("nombre")
+  activo             Boolean   @default(true) @map("activo")
+  fechaCreacion      DateTime  @default(now()) @map("fecha_creacion")
+  fechaActualizacion DateTime  @updatedAt @map("fecha_actualizacion")
+
+  facultad           Facultad  @relation(fields: [facultadId], references: [id], onDelete: Cascade)
+  tramites           Tramite[]
+
+  @@map("escuelas_profesionales")
+}
+
+model Tramite {
+  id                 String             @id @default(uuid())
+  codigo             String             @unique @map("codigo")
+  titulo             String             @map("titulo")
+  descripcion        String?            @map("descripcion")
+  resumen            String?            @map("resumen")
+  colorHex           String?            @map("color_hex")
+  facultadId         String?            @map("facultad_id")
+  escuelaId          String?            @map("escuela_id")
+  activo             Boolean            @default(true) @map("activo")
+  fechaCreacion      DateTime           @default(now()) @map("fecha_creacion")
+  fechaActualizacion DateTime           @updatedAt @map("fecha_actualizacion")
+
+  facultad           Facultad?          @relation(fields: [facultadId], references: [id], onDelete: SetNull)
+  escuela            EscuelaProfesional? @relation(fields: [escuelaId], references: [id], onDelete: SetNull)
+  requisitos         RequisitoTramite[]
+
+  @@map("tramites")
+}
+
+model RequisitoTramite {
+  id                 String    @id @default(uuid())
+  tramiteId          String    @map("tramite_id")
+  titulo             String    @map("titulo")
+  descripcion        String?   @map("descripcion")
+  obligatorio        Boolean   @default(true) @map("obligatorio")
+  orden              Int       @default(0) @map("orden")
+  fechaCreacion      DateTime  @default(now()) @map("fecha_creacion")
+  fechaActualizacion DateTime  @updatedAt @map("fecha_actualizacion")
+
+  tramite            Tramite   @relation(fields: [tramiteId], references: [id], onDelete: Cascade)
+
+  @@map("requisitos_tramite")
+}

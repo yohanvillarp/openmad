@@ -1,0 +1,4 @@
+# robots.txt for OpenMad Manager administrative portal
+# Administrative dashboards should not be indexed by public search engines.
+User-agent: *
+Disallow: /

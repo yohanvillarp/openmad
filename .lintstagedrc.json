@@ -1,0 +1,14 @@
+{
+  "backend/**/*.{ts,js}": [
+    "npm --prefix backend run lint"
+  ],
+  "apps/web/**/*.{ts,tsx,js,jsx}": [
+    "npm --prefix apps/web run lint"
+  ],
+  "apps/manager/**/*.{ts,tsx,js,jsx}": [
+    "npm --prefix apps/manager run lint"
+  ],
+  "apps/vanilla/**/*.{js,css,html}": [
+    "node -e \"const { execSync } = require('child_process'); execSync('npm --prefix apps/vanilla run build', { stdio: 'inherit' });\""
+  ]
+}

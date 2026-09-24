@@ -1,0 +1,32 @@
+name: Mejora de Documentacion
+description: Propuesta o correccion de guias, manuales tecnicos o arquitectura
+title: "[DOCS]: "
+labels: ["documentation"]
+body:
+  - type: markdown
+    attributes:
+      value: "Gracias por ayudarnos a mantener la documentacion de OpenMad actualizada y clara."
+  - type: input
+    id: doc_location
+    attributes:
+      label: Ubicacion o Archivo a Mejorar
+      description: Ruta del archivo o seccion de la documentacion afectada.
+      placeholder: "Ejemplo: docs/deployment-vercel-environments.md o CONTRIBUTING.md"
+    validations:
+      required: true
+  - type: textarea
+    id: problem_description
+    attributes:
+      label: Que problema o vacio identificaste?
+      description: Explica que informacion falta, esta desactualizada o resulta confusa.
+      placeholder: "Describe que seccion requiere cambios..."
+    validations:
+      required: true
+  - type: textarea
+    id: suggested_changes
+    attributes:
+      label: Cambios o Contenido Sugerido
+      description: Redaccion propuesta o esquema del nuevo contenido.
+      placeholder: "Escribe aqui el texto o resumen que deberia agregarse..."
+    validations:
+      required: true

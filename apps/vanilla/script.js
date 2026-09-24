@@ -6,6 +6,7 @@ import { renderFaq } from './pages/faq.js';
 import { renderContact } from './pages/contact.js';
 import { flushProgressReveal } from './utils/progress-actions.js';
 import { updateNavbarActive } from './components/navbar.js';
+import { updateSeoTags } from './utils/seo.js';
 import './components/footer.js';
 
 function initApp() {
@@ -36,6 +37,7 @@ function initApp() {
 
     function router() {
         window.scrollTo(0, 0);
+        updateSeoTags();
         const hash = (window.location.hash || '#home').split('?')[0];
         const routeKey = routes[hash] || 'home';
 

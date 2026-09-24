@@ -1,0 +1,73 @@
+name: Solicitud de Tramite Academico
+description: Propuesta para agregar o actualizar un tramite universitario de la UNAMAD
+title: "[TRAMITE]: "
+labels: ["tramite", "catalog"]
+body:
+  - type: markdown
+    attributes:
+      value: "Utiliza este formulario para solicitar la incorporacion o modificacion de un tramite en el catalogo oficial de OpenMad."
+  - type: input
+    id: tramite_name
+    attributes:
+      label: Nombre del Tramite
+      description: Denominacion formal del tramite segun el TUPA o resolucion universitaria.
+      placeholder: "Ejemplo: Constancia de Estudios, Grado de Bachiller, Rectificacion de Matricula"
+    validations:
+      required: true
+  - type: dropdown
+    id: dependencia
+    attributes:
+      label: Dependencia o Facultad Responsable
+      description: Entidad universitaria encargada de procesar el expediente.
+      options:
+        - "Direccion de Asuntos Academicos (DAA)"
+        - "Direccion de Registro y Servicios Academicos (DRySA)"
+        - "Facultad de Ingenieria"
+        - "Facultad de Educacion"
+        - "Facultad de Ecoturismo"
+        - "Escuela de Posgrado"
+        - "Mesa de Partes General"
+        - "Otra dependencia"
+    validations:
+      required: true
+  - type: dropdown
+    id: request_type
+    attributes:
+      label: Tipo de Solicitud
+      options:
+        - "Incorporar nuevo tramite al catalogo"
+        - "Actualizar requisitos o costos de tramite existente"
+        - "Reportar tramite desactualizado o descontinuado"
+    validations:
+      required: true
+  - type: textarea
+    id: requisitos
+    attributes:
+      label: Requisitos Obligatorios
+      description: Lista numerada o con guiones de todos los requisitos necesarios para iniciar el expediente.
+      placeholder: |
+        - Solicitud dirigida al Decano/Director (Formato FUT)
+        - Comprobante de pago de tasa educativa
+        - Certificado o reporte de notas
+    validations:
+      required: true
+  - type: input
+    id: costo
+    attributes:
+      label: Costo y Tasa Administrativa (en Soles)
+      description: Monto oficial o indicar si es gratuito.
+      placeholder: "Ejemplo: S/. 15.50 (o Gratuito)"
+    validations:
+      required: true
+  - type: input
+    id: plazo
+    attributes:
+      label: Plazo Estimado de Atencion
+      description: Dias habiles de respuesta segun TUPA o normativa interna.
+      placeholder: "Ejemplo: 5 dias habiles"
+  - type: textarea
+    id: base_legal
+    attributes:
+      label: Base Legal o Enlace a Resolucion
+      description: Enlace al TUPA vigente, portal de transparencia de la UNAMAD o numero de resolucion de consejo universitario.
+      placeholder: "Ejemplo: Resolucion Rectoral N° 120-2025-UNAMAD-R"

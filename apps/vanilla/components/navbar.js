@@ -163,7 +163,5 @@ function bindNavbarEvents() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    if (typeof renderNavbar === 'function') {
-        renderNavbar();
-    }
+    renderNavbar();
 });

@@ -2,34 +2,46 @@ name: Integracion Continua (CI)
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "develop" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "main", "develop" ]
 
 jobs:
-  build:
-    name: Compilacion y Pruebas
+  validate:
+    name: Compilacion, Linter y Pruebas (Turborepo)
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        node-version: [20.x]
+        node-version: [24.x]
 
     steps:
-    - name: Clonar el repositorio
-      uses: actions/checkout@v4
+      - name: Clonar el repositorio
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 2
 
-    - name: Configurar Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v4
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
+      - name: Configurar Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v7
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
 
-    - name: Instalar dependencias globales
-      run: npm install
+      - name: Instalar dependencias del monorepo
+        run: npm install
 
-    - name: Construir la aplicacion Vanilla JS
-      working-directory: ./apps/vanilla
-      run: |
-        npm install
-        npm run build
+      - name: Ejecutar Compilacion, Linter y Pruebas en Paralelo
+        run: npx turbo run build lint test
+
+      - name: Generar Reporte de Cobertura en Backend
+        run: npm --prefix backend run test:cov
+
+      - name: Subir Cobertura a Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          files: ./backend/coverage/lcov.info
+          flags: backend
+          name: openmad-backend
+          fail_ci_if_error: false
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}

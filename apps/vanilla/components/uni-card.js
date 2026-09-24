@@ -1,4 +1,4 @@
-import { university, routes } from '../mocks/routes.js';
+import { university as defaultUniversity, routes as defaultRoutes } from '../mocks/routes.js';
 
 
 /**
@@ -11,14 +11,15 @@ import { university, routes } from '../mocks/routes.js';
  * @returns {string}
  */
 export function renderUniCard (options) {
-    const university = options.university || university || {};
-    const routes = options.routes || routes || [];
-    const code = university.code || 'UNAMAD';
-    const name = university.name || '';
-    const color = university.color || '#22c55e';
-    const count = routes.length;
+    const opts = options || {};
+    const uni = opts.university || defaultUniversity || {};
+    const routeList = opts.routes || defaultRoutes || [];
+    const code = uni.code || 'UNAMAD';
+    const name = uni.name || '';
+    const color = uni.color || '#22c55e';
+    const count = routeList.length;
 
-    const routesHtml = routes
+    const routesHtml = routeList
         .map((route) => `
         <a class="uni-card__route" href="#rutas?ruta=${encodeURIComponent(route.id)}">
           <span class="icon-ruta" aria-hidden="true"></span>

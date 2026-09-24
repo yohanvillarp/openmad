@@ -6,6 +6,7 @@ import { renderModuleSteps } from './module-steps.js';
 import { renderRouteModules } from './route-modules.js';
 import { renderRouteCard } from '../components/route-card.js';
 import { renderRoutesHeader } from '../components/routes-header.js';
+import { updateSeoTags, updateStructuredData } from '../utils/seo.js';
 
 
 export function renderRoutes (container) {
@@ -35,13 +36,29 @@ export function renderRoutes (container) {
         return;
     }
     if (selected && moduleId) {
+        updateSeoTags({
+            title: `${selected.label} | OpenMad UNAMAD`,
+            description: selected.summary
+        });
         renderModuleSteps(container, selected, moduleId);
         return;
     }
     if (selected) {
+        updateSeoTags({
+            title: `${selected.label} - Guía y Requisitos | OpenMad UNAMAD`,
+            description: selected.summary
+        });
+        updateStructuredData({
+            '@context': 'https://schema.org',
+            '@type': 'HowTo',
+            name: `Guía para ${selected.label} en la UNAMAD`,
+            description: selected.summary
+        }, 'route-howto-schema');
         renderRouteModules(container, selected);
         return;
     }
+
+    updateStructuredData(null, 'route-howto-schema');
 
     const routeEntries = routes.map((route) => ({
         route,
@@ -64,7 +81,7 @@ export function renderRoutes (container) {
     <section class="page page--rutas">
       ${renderRoutesHeader({
           icon: 'icon-ruta',
-          title: 'Rutas',
+          title: 'Rutas y Procesos Académicos UNAMAD',
           lead: routeIntro,
           meta: availabilitySummary
       })}

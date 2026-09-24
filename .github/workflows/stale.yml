@@ -1,0 +1,29 @@
+name: Gestion de Inactividad (Stale Bot)
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+
+permissions:
+  issues: write
+  pull-requests: write
+
+jobs:
+  stale:
+    name: Revisar Elementos Inactivos
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/stale@v9
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          days-before-stale: 30
+          days-before-close: 7
+          stale-issue-label: "stale"
+          stale-pr-label: "stale"
+          stale-issue-message: "Este issue ha sido marcado automaticamente como inactivo (stale) debido a 30 dias sin actividad. Se cerrara en 7 dias si no se registra nueva actividad."
+          stale-pr-message: "Este Pull Request ha sido marcado como inactivo (stale) tras 30 dias sin actividad. Se cerrara en 7 dias si no hay actualizaciones."
+          close-issue-message: "Este issue se cerro automaticamente por inactividad prolongada."
+          close-pr-message: "Este Pull Request se cerro automaticamente por inactividad prolongada."
+          exempt-issue-labels: "pinned,security,en-progreso"
+          exempt-pr-labels: "pinned,security,en-progreso"

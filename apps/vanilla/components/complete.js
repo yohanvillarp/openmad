@@ -1,6 +1,7 @@
 import { uncompleteStep, completeStep, queueProgressReveal } from '../utils/progress-actions.js';
 import { rerenderRoutesView } from '../utils/routes-view.js';
 import { animateProgress } from './progress.js';
+import { escapeHtml } from '../utils/sanitize.js';
 
 
 export function renderCompleteStep (options) {
@@ -8,7 +9,7 @@ export function renderCompleteStep (options) {
     const done = !!opts.done;
     const taskProgress = opts.taskProgress || { done: 0, total: 0 };
     const hasPendingTasks = taskProgress.total > 0 && taskProgress.done < taskProgress.total;
-    const ids = `data-ruta="${opts.routeId || ''}" data-modulo="${opts.moduleId || ''}" data-paso="${opts.stepId || ''}"`;
+    const ids = `data-ruta="${escapeHtml(opts.routeId || '')}" data-modulo="${escapeHtml(opts.moduleId || '')}" data-paso="${escapeHtml(opts.stepId || '')}"`;
 
     if (done) {
         return `

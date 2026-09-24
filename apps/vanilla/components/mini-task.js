@@ -85,8 +85,10 @@ export function renderMiniTask (options) {
 
 let miniTaskEventsBound = false;
 
-if (!miniTaskEventsBound) {
+export function bindMiniTaskEvents () {
+    if (miniTaskEventsBound) return;
     miniTaskEventsBound = true;
+
     document.addEventListener('click', (event) => {
         const panelTrigger = event.target.closest('[data-info-panel-target]');
         if (panelTrigger) {
@@ -119,3 +121,5 @@ if (!miniTaskEventsBound) {
         }
     });
 }
+
+bindMiniTaskEvents();

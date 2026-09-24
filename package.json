@@ -1,10 +1,27 @@
 {
+  "name": "openmad",
+  "private": true,
+  "type": "module",
+  "license": "Apache-2.0",
+  "packageManager": "npm@11.11.0",
+  "workspaces": [
+    "apps/*",
+    "backend"
+  ],
+  "scripts": {
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "test": "turbo run test",
+    "gen:module": "node scripts/scaffold-backend-module.js",
+    "gen:slice": "node scripts/scaffold-fsd-slice.js",
+    "sarif:generate": "node scripts/generate-sarif.js results.sarif",
+    "prepare": "node -e \"if (!process.env.CI && !process.env.VERCEL) { try { require('child_process').execSync('npx --no-install husky', { stdio: 'inherit' }); } catch {} }\""
+  },
   "devDependencies": {
     "@commitlint/cli": "^21.2.2",
     "@commitlint/config-conventional": "^21.2.2",
-    "husky": "^9.1.7"
-  },
-  "scripts": {
-    "prepare": "husky"
+    "husky": "^9.1.7",
+    "lint-staged": "^17.5.1",
+    "turbo": "^2.11.2"
   }
 }

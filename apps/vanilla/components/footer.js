@@ -52,7 +52,5 @@ export function renderFooter () {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-    if (typeof renderFooter === 'function') {
-        renderFooter();
-    }
+    renderFooter();
 });
