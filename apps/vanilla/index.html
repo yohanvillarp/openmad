@@ -3,24 +3,124 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>OpenMad</title>
-    <meta name="description" content="Guía web de procesos académicos para estudiantes de la UNAMAD." />
-    
-    <!-- Open Graph / WhatsApp -->
+    <title>OpenMad | Guía de Trámites y Procesos Académicos UNAMAD</title>
+    <meta name="description" content="Guía estudiantil independiente para trámites, matrícula, grado de bachiller, prácticas y procesos académicos en la Universidad Nacional Amazónica de Madre de Dios (UNAMAD)." />
+    <meta name="keywords" content="UNAMAD, trámites UNAMAD, bachiller UNAMAD, prácticas preprofesionales UNAMAD, tesis UNAMAD, título profesional UNAMAD, mesa de partes UNAMAD, guía del estudiante Puerto Maldonado" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://openmad.nikelyh.tech/" />
+    <!-- Verificación Google Search Console -->
+    <meta name="google-site-verification" content="google59287774806caf77" />
+
+    <!-- Geo Tags -->
+    <meta name="geo.region" content="PE-MDD" />
+    <meta name="geo.placename" content="Puerto Maldonado" />
+
+    <!-- Open Graph / WhatsApp / Facebook -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="OpenMad" />
+    <meta property="og:locale" content="es_PE" />
     <meta property="og:url" content="https://openmad.nikelyh.tech/" />
-    <meta property="og:title" content="OpenMad" />
-    <meta property="og:description" content="Guía web de procesos académicos para estudiantes de la UNAMAD." />
+    <meta property="og:title" content="OpenMad | Guía de Trámites y Procesos Académicos UNAMAD" />
+    <meta property="og:description" content="Guía estudiantil para trámites, matrícula, bachiller, prácticas y procesos académicos en la UNAMAD." />
     <meta property="og:image" content="https://openmad.nikelyh.tech/assets/logo_openmad.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="OpenMad - Guía de trámites para estudiantes de la UNAMAD" />
+    <meta property="og:image:type" content="image/png" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://openmad.nikelyh.tech/" />
-    <meta property="twitter:title" content="OpenMad" />
-    <meta property="twitter:description" content="Guía web de procesos académicos para estudiantes de la UNAMAD." />
+    <meta property="twitter:title" content="OpenMad | Guía de Trámites y Procesos Académicos UNAMAD" />
+    <meta property="twitter:description" content="Guía estudiantil para trámites, matrícula, bachiller, prácticas y procesos académicos en la UNAMAD." />
     <meta property="twitter:image" content="https://openmad.nikelyh.tech/assets/logo_openmad.png" />
+    <meta property="twitter:image:alt" content="OpenMad - Guía de trámites para estudiantes de la UNAMAD" />
 
     <link rel="icon" type="image/png" href="assets/logo_openmad.png" />
+
+    <!-- Schema.org JSON-LD (Rich Snippets Google) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://openmad.nikelyh.tech/#website",
+          "url": "https://openmad.nikelyh.tech/",
+          "name": "OpenMad",
+          "alternateName": "OpenMad UNAMAD",
+          "description": "Guía estudiantil independiente para trámites, matrícula, bachiller y procesos académicos en la Universidad Nacional Amazónica de Madre de Dios.",
+          "inLanguage": "es-PE"
+        },
+        {
+          "@type": "EducationalOrganization",
+          "@id": "https://unamad.edu.pe/#organization",
+          "name": "Universidad Nacional Amazónica de Madre de Dios",
+          "alternateName": "UNAMAD",
+          "url": "https://unamad.edu.pe/",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Puerto Maldonado",
+            "addressRegion": "Madre de Dios",
+            "addressCountry": "PE"
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://openmad.nikelyh.tech/#faq-schema",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "¿Hay rutas para todas las carreras en la UNAMAD?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Cada ruta puede corresponder a una facultad completa o a una escuela profesional específica. El contenido inicial pertenece a la Facultad de Ingeniería."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿OpenMad cuenta con respaldo oficial de la UNAMAD?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "OpenMad es una iniciativa estudiantil independiente y sin fines de lucro. Brinda orientación basada en experiencias reales, recomendando confirmar siempre en ventanillas oficiales."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Los costos y formatos de trámites están al día con el TUPA?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "La información es referencial. Los costos, requisitos y normativas del TUPA de la UNAMAD pueden variar según las actualizaciones institucionales."
+              }
+            }
+          ]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Inicio",
+              "item": "https://openmad.nikelyh.tech/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Rutas y Trámites",
+              "item": "https://openmad.nikelyh.tech/#rutas"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Preguntas Frecuentes",
+              "item": "https://openmad.nikelyh.tech/#faq"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
 
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="app.css" />

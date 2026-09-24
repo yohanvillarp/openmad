@@ -1,4 +1,5 @@
 import { concepts } from '../mocks/concepts.js';
+import { updateSeoTags } from '../utils/seo.js';
 
 
 function getSelectedConcept() {
@@ -8,7 +9,13 @@ function getSelectedConcept() {
 }
 
 export function renderConcepts (container) {
-        const selected = getSelectedConcept();
+    const selected = getSelectedConcept();
+    if (selected) {
+        updateSeoTags({
+            title: `${selected.label} - Conceptos Académicos | OpenMad UNAMAD`,
+            description: selected.definition
+        });
+    }
 
     if (!selected) {
         container.innerHTML = '<section class="page"><p>No hay conceptos disponibles.</p></section>';
@@ -45,7 +52,7 @@ export function renderConcepts (container) {
         </div>
 
         <article class="concept-detail__content">
-          <p class="concept-detail__eyebrow">Conceptos de OpenMad</p>
+          <p class="concept-detail__eyebrow">Conceptos y Glosario Académico UNAMAD</p>
           <h1>${selected.label}</h1>
           <p class="concept-detail__definition">${selected.definition}</p>
           <h2>Casos de uso en OpenMad</h2>

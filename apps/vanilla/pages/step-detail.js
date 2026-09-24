@@ -8,6 +8,7 @@ import { renderCompleteStep } from '../components/complete.js';
 import { isStepDone } from '../utils/progress.js';
 import { renderPath } from '../components/path.js';
 import { renderRoutesHeader } from '../components/routes-header.js';
+import { updateSeoTags } from '../utils/seo.js';
 
 
 export function renderStepDetail (container, route, moduleId, stepId) {
@@ -24,6 +25,11 @@ export function renderStepDetail (container, route, moduleId, stepId) {
         window.location.hash = `#rutas?ruta=${encodeURIComponent(route.id)}&modulo=${encodeURIComponent(selectedModule.id)}`;
         return;
     }
+
+    updateSeoTags({
+        title: `${step.label} - ${route.label} | OpenMad UNAMAD`,
+        description: step.summary || selectedModule.summary || stepIntro
+    });
 
     const taskProgress = getStepTaskProgress(route.id, selectedModule.id, step.id);
     const body = stepHasGuide(step)

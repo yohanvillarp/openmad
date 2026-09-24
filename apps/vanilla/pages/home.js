@@ -22,12 +22,10 @@ export function renderHome (container) {
             </p>
           </div>
 
-          <h1 class="hero__title">Sigue tus trámites paso a paso.</h1>
+          <h1 class="hero__title">Guía de trámites y procesos académicos en la UNAMAD</h1>
 
           <p class="hero__lead">
-            OpenMad organiza cada proceso en módulos y pasos para que sepas qué hacer,
-            qué documentos preparar y dónde obtenerlos. También puedes marcar tu avance
-            y retomarlo después.
+            OpenMad organiza los trámites universitarios en módulos y pasos claros para que sepas qué requisitos preparar, qué documentos presentar y cómo completar tu avance académico sin perderte en ventanillas.
           </p>
 
           <ul class="hero__points">
