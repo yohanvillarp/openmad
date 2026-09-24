@@ -9,6 +9,7 @@ node_modules/
 dist/
 coverage/
 *.lcov
+*.sarif
 
 # Variables de entorno y secretos (permitiendo unicamente plantillas de ejemplo)
 .env
