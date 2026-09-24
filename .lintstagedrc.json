@@ -9,6 +9,6 @@
     "npm --prefix apps/manager run lint"
   ],
   "apps/vanilla/**/*.{js,css,html}": [
-    "npm --prefix apps/vanilla run build"
+    "node -e \"const { execSync } = require('child_process'); execSync('npm --prefix apps/vanilla run build', { stdio: 'inherit' });\""
   ]
 }
