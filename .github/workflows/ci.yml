@@ -37,7 +37,7 @@ jobs:
         run: npm --prefix backend run test:cov
 
       - name: Subir Cobertura a Codecov
-        uses: codecov/codecov-action@v5
+        uses: codecov/codecov-action@v7
         with:
           files: ./backend/coverage/lcov.info
           flags: backend
