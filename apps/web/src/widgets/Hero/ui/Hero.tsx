@@ -1,4 +1,4 @@
-import { Button } from '@shared/ui/button';
+import { Button } from '@shared/ui/button/index';
 import { ArrowRight, GraduationCap, Map, Target } from 'lucide-react';
 import { AnimatedGraph } from './AnimatedGraph';
 import { GithubIcon } from '@shared/ui/icon';

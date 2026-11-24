@@ -1,5 +1,5 @@
 import { Users, Mail } from 'lucide-react';
-import { Button } from '@shared/ui/button';
+import { Button } from '@shared/ui/button/index';
 
 export function UniversityCta() {
   return (
