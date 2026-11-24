@@ -105,15 +105,18 @@ export function attachPieceToStep(step: StepItem, type: PalettePieceType): StepI
 
 export function removePieceFromStep(step: StepItem, piece: PalettePieceType): StepItem {
   if (piece === 'cost') {
-    const { cost, ...rest } = step;
+    const rest = { ...step };
+    delete rest.cost;
     return rest;
   }
   if (piece === 'drive') {
-    const { drive, ...rest } = step;
+    const rest = { ...step };
+    delete rest.drive;
     return rest;
   }
   if (piece === 'validity') {
-    const { validity, ...rest } = step;
+    const rest = { ...step };
+    delete rest.validity;
     return rest;
   }
   if (piece === 'alert' && step.guide) {

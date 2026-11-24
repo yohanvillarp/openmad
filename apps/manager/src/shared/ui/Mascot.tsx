@@ -1,9 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
+/* eslint-disable react-refresh/only-export-components */
 export * from './Mascot/types';
 export * from './Mascot/useMascot';
 export * from './Mascot/InteractiveMascot';
+/* eslint-enable react-refresh/only-export-components */
 
 export type MascotMood = 'happy' | 'thinking' | 'sleeping' | 'secure' | 'excited';
 

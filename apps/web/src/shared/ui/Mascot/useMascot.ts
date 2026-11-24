@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import type { MascotMood, MascotConfig } from './types';
 
 const DEFAULT_DIALOGUES: Record<MascotMood, string> = {
@@ -12,7 +12,10 @@ const DEFAULT_DIALOGUES: Record<MascotMood, string> = {
 export function useMascot(config: MascotConfig = {}) {
   const { sleepTimeoutMs = 15000, dialogues = {}, enableAutoSleep = true } = config;
 
-  const mergedDialogues = { ...DEFAULT_DIALOGUES, ...dialogues };
+  const mergedDialogues = useMemo(
+    () => ({ ...DEFAULT_DIALOGUES, ...dialogues }),
+    [dialogues]
+  );
 
   const [mood, setMood] = useState<MascotMood>('happy');
   const [speech, setSpeech] = useState<string>(mergedDialogues.happy);

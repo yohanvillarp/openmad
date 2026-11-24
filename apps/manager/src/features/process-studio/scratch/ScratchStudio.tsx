@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import confetti from 'canvas-confetti';
 import type { RouteDefinition, StepItem, PalettePieceType } from '../types';
 import { PaletteBlocks } from './PaletteBlocks';
@@ -24,7 +24,7 @@ export const ScratchStudio: React.FC<ScratchStudioProps> = ({
 }) => {
   const [activeModuleId, setActiveModuleId] = useState<string>(route.modules[0]?.id || '');
   const activeModule = route.modules.find((m) => m.id === activeModuleId) || route.modules[0];
-  const steps = activeModule?.steps || [];
+  const steps = useMemo(() => activeModule?.steps || [], [activeModule]);
 
   const [selectedStepId, setSelectedStepId] = useState<string>(steps[0]?.id || '');
   const [showCode, setShowCode] = useState(false);
@@ -60,9 +60,11 @@ export const ScratchStudio: React.FC<ScratchStudioProps> = ({
           setLog((prev) => [...prev, `Paso ${next + 1}: ${cur.label} (${cur.location})`]);
         }, 1200);
       } else {
-        setIsRunning(false);
-        confetti({ particleCount: 110, spread: 75, origin: { y: 0.6 } });
-        setLog((prev) => [...prev, '★ MÓDULO VERIFICADO CON ÉXITO (+50 XP).']);
+        timer = setTimeout(() => {
+          setIsRunning(false);
+          confetti({ particleCount: 110, spread: 75, origin: { y: 0.6 } });
+          setLog((prev) => [...prev, '★ MÓDULO VERIFICADO CON ÉXITO (+50 XP).']);
+        }, 0);
       }
     }
     return () => clearTimeout(timer);

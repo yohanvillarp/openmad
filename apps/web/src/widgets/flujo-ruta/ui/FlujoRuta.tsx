@@ -6,6 +6,7 @@ import {
   useNodesState,
   useEdgesState,
   BackgroundVariant,
+  type Node,
 } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
 
@@ -36,7 +37,7 @@ export function FlujoRuta() {
     }
   }, [activeGraph, setNodes, setEdges]);
 
-  const onNodeClick = useCallback((event: React.MouseEvent, node: any) => {
+  const onNodeClick = useCallback((_event: React.MouseEvent, node: Node) => {
     if (activeGraph === 'macro' && node.id === 'r2') {
       setActiveGraph('bachillerato');
     } else if (activeGraph === 'bachillerato' && node.id === 'b-end') {

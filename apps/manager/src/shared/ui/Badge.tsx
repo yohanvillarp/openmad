@@ -17,8 +17,8 @@ export const Badge: React.FC<BadgeProps> = ({
 }) => {
   const sizeStyles = size === 'sm' ? 'px-2 py-0.5 text-[11px]' : 'px-2.5 py-1 text-xs';
 
-  let variantStyles = '';
-  let pulseColor = '';
+  let variantStyles: string;
+  let pulseColor: string;
 
   switch (variant) {
     case 'accent':

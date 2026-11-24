@@ -13,7 +13,7 @@ export function NodoHito({ data }: NodeProps<Node<Tramite, 'hito'>>) {
 
   let fill = '#475569';
   let stroke = '#cbd5e1';
-  let strokeWidth = '4';
+  const strokeWidth = '4';
 
   if (isCompleted) {
     fill = '#10B981';
@@ -27,7 +27,7 @@ export function NodoHito({ data }: NodeProps<Node<Tramite, 'hito'>>) {
   }
 
   const nodeAnimation = isInProgress
-    ? { y: [0, -4, 0], transition: { repeat: Infinity, duration: 2, ease: "easeInOut" } }
+    ? { y: [0, -4, 0], transition: { repeat: Infinity, duration: 2, ease: 'easeInOut' as const } }
     : {};
 
   const pulseAnimation = isAvailable

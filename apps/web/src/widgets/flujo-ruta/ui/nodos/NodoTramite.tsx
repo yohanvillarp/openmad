@@ -12,7 +12,7 @@ export function NodoTramite({ data }: NodeProps<Node<Tramite, 'tramite'>>) {
 
   let fill = '#475569'; // Default Locked (Slate)
   let stroke = '#cbd5e1'; // Slate 300
-  let strokeWidth = '4';
+  const strokeWidth = '4';
 
   if (isCompleted) {
     fill = '#10B981'; // Emerald 500
@@ -27,7 +27,7 @@ export function NodoTramite({ data }: NodeProps<Node<Tramite, 'tramite'>>) {
 
   // Animaciones para estados activos
   const nodeAnimation = isInProgress
-    ? { y: [0, -4, 0], transition: { repeat: Infinity, duration: 2, ease: "easeInOut" } }
+    ? { y: [0, -4, 0], transition: { repeat: Infinity, duration: 2, ease: 'easeInOut' as const } }
     : {};
 
   const pulseAnimation = isAvailable

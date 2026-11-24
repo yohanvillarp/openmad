@@ -1,8 +1,8 @@
-import { Handle, Position } from '@xyflow/react';
+import { Handle, Position, type NodeProps, type Node } from '@xyflow/react';
 import { Trophy } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-export function NodoFin({ data }: any) {
+export function NodoFin({ data }: NodeProps<Node<{ titulo?: string }>>) {
   return (
     <div className="relative flex flex-col items-center justify-start group w-[120px] cursor-pointer hover:scale-105 transition-transform duration-200">
       <Handle type="target" position={Position.Left} id="left-target" className="opacity-0" />

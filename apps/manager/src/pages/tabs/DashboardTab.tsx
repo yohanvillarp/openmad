@@ -173,7 +173,7 @@ export const DashboardTab: React.FC = () => {
                         </td>
                         <td className="py-3.5 text-xs text-[var(--text-muted)] font-medium">{item.career}</td>
                         <td className="py-3.5">
-                          <Badge variant={item.badge as any} size="sm">
+                          <Badge variant={item.badge as 'accent' | 'success' | 'warning' | 'info' | 'neutral'} size="sm">
                             <StatusIcon className="w-3 h-3" />
                             {item.status}
                           </Badge>

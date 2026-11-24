@@ -1,6 +1,7 @@
 import React from 'react';
 import { Layers } from 'lucide-react';
 import type { StepItem, PalettePieceType } from '../types';
+import type { DragItem } from './useStepDragDrop';
 import { PuzzleStepBlock } from './PuzzleStepBlock';
 
 interface PuzzleAssemblyColumnProps {
@@ -12,7 +13,7 @@ interface PuzzleAssemblyColumnProps {
   onRemovePieceFromStep: (stepId: string, piece: PalettePieceType) => void;
   // Drag & Drop
   isDragging: boolean;
-  activeDragItem: any;
+  activeDragItem: DragItem | null;
   dragOverStepIndex: number | null;
   targetStepForPiece: string | null;
   onDragStartStack: (e: React.DragEvent, index: number) => void;
