@@ -1,1 +1,332 @@
 @import "tailwindcss";
+
+@theme {
+  --font-display: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+/* ==========================================================================
+   OPENMAD THEME SYSTEM - CSS Custom Properties
+   ========================================================================== */
+
+:root {
+  /* Default Theme: Red (Carmesí / Flame Anime) */
+  --bg-app: #08090d;
+  --bg-surface: #0f1117;
+  --bg-surface-elevated: #161922;
+  --bg-surface-hover: #1c202c;
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(255, 255, 255, 0.18);
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+
+  --accent-base: #ff2a5f;
+  --accent-hover: #e11d48;
+  --accent-glow: rgba(255, 42, 95, 0.45);
+  --accent-subtle: rgba(255, 42, 95, 0.12);
+  --accent-border: rgba(255, 42, 95, 0.35);
+  --accent-contrast: #ffffff;
+
+  --status-success: #34d399;
+  --status-success-bg: rgba(52, 211, 153, 0.12);
+  --status-warning: #fbbf24;
+  --status-warning-bg: rgba(251, 191, 36, 0.12);
+  --status-info: #38bdf8;
+  --status-info-bg: rgba(56, 189, 248, 0.12);
+
+  --mascot-eye: #ff2a5f;
+  --mascot-chassis-bg: #161922;
+  --mascot-chassis-stroke: rgba(255, 255, 255, 0.15);
+}
+
+/* --- Color Theme: RED (Carmesí Flame) --- */
+[data-color="red"] {
+  --bg-app: #09090e;
+  --bg-surface: #101118;
+  --bg-surface-elevated: #181924;
+  --bg-surface-hover: #212232;
+  --border-subtle: rgba(255, 42, 95, 0.15);
+  --border-hover: rgba(255, 42, 95, 0.35);
+  --text-main: #f8fafc;
+  --text-muted: #cbd5e1;
+  --text-dim: #64748b;
+
+  --accent-base: #ff2a5f;
+  --accent-hover: #e11d48;
+  --accent-glow: rgba(255, 42, 95, 0.45);
+  --accent-subtle: rgba(255, 42, 95, 0.12);
+  --accent-border: rgba(255, 42, 95, 0.35);
+  --accent-contrast: #ffffff;
+
+  --status-success: #34d399;
+  --status-success-bg: rgba(52, 211, 153, 0.12);
+  --status-warning: #fbbf24;
+  --status-warning-bg: rgba(251, 191, 36, 0.12);
+  --status-info: #38bdf8;
+  --status-info-bg: rgba(56, 189, 248, 0.12);
+
+  --mascot-eye: #ff2a5f;
+  --mascot-chassis-bg: #181924;
+  --mascot-chassis-stroke: rgba(255, 42, 95, 0.25);
+}
+
+/* --- Color Theme: BLUE (Electric Cyber Cyan) --- */
+[data-color="blue"] {
+  --bg-app: #060913;
+  --bg-surface: #0c1220;
+  --bg-surface-elevated: #131c30;
+  --bg-surface-hover: #192742;
+  --border-subtle: rgba(56, 189, 248, 0.15);
+  --border-hover: rgba(56, 189, 248, 0.35);
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+
+  --accent-base: #00d2ff;
+  --accent-hover: #0284c7;
+  --accent-glow: rgba(0, 210, 255, 0.45);
+  --accent-subtle: rgba(0, 210, 255, 0.12);
+  --accent-border: rgba(0, 210, 255, 0.35);
+  --accent-contrast: #041019;
+
+  --status-success: #34d399;
+  --status-success-bg: rgba(52, 211, 153, 0.12);
+  --status-warning: #fbbf24;
+  --status-warning-bg: rgba(251, 191, 36, 0.12);
+  --status-info: #38bdf8;
+  --status-info-bg: rgba(56, 189, 248, 0.12);
+
+  --mascot-eye: #00d2ff;
+  --mascot-chassis-bg: #131c30;
+  --mascot-chassis-stroke: rgba(0, 210, 255, 0.25);
+}
+
+/* --- Color Theme: GREEN (Toxic / Matrix Emerald) --- */
+[data-color="green"] {
+  --bg-app: #060e0a;
+  --bg-surface: #0a1711;
+  --bg-surface-elevated: #10241b;
+  --bg-surface-hover: #163226;
+  --border-subtle: rgba(16, 185, 129, 0.15);
+  --border-hover: rgba(16, 185, 129, 0.35);
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+
+  --accent-base: #10b981;
+  --accent-hover: #059669;
+  --accent-glow: rgba(16, 185, 129, 0.45);
+  --accent-subtle: rgba(16, 185, 129, 0.12);
+  --accent-border: rgba(16, 185, 129, 0.35);
+  --accent-contrast: #021a0f;
+
+  --status-success: #34d399;
+  --status-success-bg: rgba(52, 211, 153, 0.12);
+  --status-warning: #fbbf24;
+  --status-warning-bg: rgba(251, 191, 36, 0.12);
+  --status-info: #38bdf8;
+  --status-info-bg: rgba(56, 189, 248, 0.12);
+
+  --mascot-eye: #10b981;
+  --mascot-chassis-bg: #10241b;
+  --mascot-chassis-stroke: rgba(16, 185, 129, 0.25);
+}
+
+/* --- Color Theme: WHITE (Silver Frost Light - Refined High-Contrast) --- */
+[data-color="white"] {
+  --bg-app: #f4f6fa;
+  --bg-surface: #ffffff;
+  --bg-surface-elevated: #f1f5f9;
+  --bg-surface-hover: #e2e8f0;
+  --border-subtle: #e2e8f0;
+  --border-hover: #cbd5e1;
+  --text-main: #090d16;
+  --text-muted: #334155;
+  --text-dim: #64748b;
+
+  /* Modern Cyber Sapphire Accent for high contrast and vibrance */
+  --accent-base: #0284c7;
+  --accent-hover: #0369a1;
+  --accent-glow: rgba(2, 132, 199, 0.3);
+  --accent-subtle: rgba(2, 132, 199, 0.1);
+  --accent-border: rgba(2, 132, 199, 0.35);
+  --accent-contrast: #ffffff;
+
+  /* High contrast accessible status colors for light mode */
+  --status-success: #059669;
+  --status-success-bg: #ecfdf5;
+  --status-warning: #b45309;
+  --status-warning-bg: #fffbeb;
+  --status-info: #0284c7;
+  --status-info-bg: #f0f9ff;
+
+  /* Mascot in light mode: Glowing cyan eyes inside dark visor, crisp chassis */
+  --mascot-eye: #00d2ff;
+  --mascot-chassis-bg: #ffffff;
+  --mascot-chassis-stroke: #cbd5e1;
+}
+
+/* --- Color Theme: BLACK (Pitch Onyx Stealth) --- */
+[data-color="black"] {
+  --bg-app: #000000;
+  --bg-surface: #0a0a0c;
+  --bg-surface-elevated: #121216;
+  --bg-surface-hover: #1b1b22;
+  --border-subtle: rgba(255, 255, 255, 0.1);
+  --border-hover: rgba(255, 255, 255, 0.25);
+  --text-main: #ffffff;
+  --text-muted: #a1a1aa;
+  --text-dim: #71717a;
+
+  --accent-base: #ffffff;
+  --accent-hover: #e4e4e7;
+  --accent-glow: rgba(255, 255, 255, 0.3);
+  --accent-subtle: rgba(255, 255, 255, 0.1);
+  --accent-border: rgba(255, 255, 255, 0.3);
+  --accent-contrast: #000000;
+
+  --status-success: #34d399;
+  --status-success-bg: rgba(52, 211, 153, 0.12);
+  --status-warning: #fbbf24;
+  --status-warning-bg: rgba(251, 191, 36, 0.12);
+  --status-info: #38bdf8;
+  --status-info-bg: rgba(56, 189, 248, 0.12);
+
+  --mascot-eye: #ffffff;
+  --mascot-chassis-bg: #121216;
+  --mascot-chassis-stroke: rgba(255, 255, 255, 0.2);
+}
+
+/* ==========================================================================
+   DEFAULT HYBRID: TACTICAL HUD + CYBER-GLOW (Combina Chamfer + Neon Glow)
+   ========================================================================== */
+
+.om-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  position: relative;
+  border-radius: 0.75rem;
+  clip-path: polygon(
+    0 0,
+    calc(100% - 12px) 0,
+    100% 12px,
+    100% 100%,
+    12px 100%,
+    0 calc(100% - 12px)
+  );
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.om-card:hover {
+  border-color: var(--accent-border);
+  box-shadow: 0 0 25px -5px var(--accent-glow);
+  transform: translateY(-2px);
+  background: var(--bg-surface-elevated);
+}
+
+.om-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-base), transparent);
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+/* White mode card shadow enhancement */
+[data-color="white"] .om-card {
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05), 0 2px 6px -1px rgba(0, 0, 0, 0.02);
+}
+
+[data-color="white"] .om-card:hover {
+  box-shadow: 0 10px 25px -5px rgba(2, 132, 199, 0.15), 0 4px 10px -2px rgba(0, 0, 0, 0.04);
+}
+
+.om-badge {
+  font-family: var(--font-mono);
+  letter-spacing: 0.04em;
+  transition: all 0.2s ease;
+}
+
+/* ==========================================================================
+   GLOBAL UTILITIES
+   ========================================================================== */
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background-color: var(--bg-app);
+  color: var(--text-main);
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+}
+
+.om-font-display {
+  font-family: var(--font-display);
+}
+
+.om-font-mono {
+  font-family: var(--font-mono);
+}
+
+/* Grid overlay background */
+.om-grid-pattern {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+
+[data-color="white"] .om-grid-pattern {
+  background-image: 
+    linear-gradient(to right, rgba(15, 23, 42, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
+}
+
+/* Light mode specific badge color corrections for WCAG AAA legibility */
+[data-color="white"] .text-emerald-400 {
+  color: #047857 !important;
+}
+[data-color="white"] .bg-emerald-500\/10 {
+  background-color: #ecfdf5 !important;
+  border-color: #a7f3d0 !important;
+}
+[data-color="white"] .text-amber-400 {
+  color: #b45309 !important;
+}
+[data-color="white"] .bg-amber-500\/10 {
+  background-color: #fffbeb !important;
+  border-color: #fde68a !important;
+}
+[data-color="white"] .text-rose-400 {
+  color: #be123c !important;
+}
+[data-color="white"] .bg-rose-500\/10 {
+  background-color: #fff1f2 !important;
+  border-color: #fecdd3 !important;
+}
+
+/* Custom sleek scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-app);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-subtle);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-base);
+}
